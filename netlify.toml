@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build:all"
+  publish = "web/dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# /api/* PRECISA vir antes do fallback do SPA (Netlify avalia redirects na ordem, primeiro match vence).
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

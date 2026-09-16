@@ -1,0 +1,27 @@
+name: CI
+
+# CI-01: valida cada push/PR (testes + build dos dois workspaces) antes de qualquer deploy. Não
+# publica nada — o deploy em si é feito pelo Netlify (via netlify.toml [build] command, quando o
+# site estiver conectado a este repositório) ou manualmente com `npm run deploy`.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-e-testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar testes e build (server + web)
+        run: npm run build:all

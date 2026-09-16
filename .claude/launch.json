@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "sigma-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--workspace=web", "--", "--host", "127.0.0.1"],
+      "port": 5173
+    },
+    {
+      "name": "sigma-server",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--workspace=server"],
+      "port": 3333
+    }
+  ]
+}
