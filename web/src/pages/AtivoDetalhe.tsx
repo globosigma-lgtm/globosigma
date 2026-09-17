@@ -109,7 +109,7 @@ export function AtivoDetalhe() {
         <>
           <div className="card" style={{ marginBottom: "24px" }}>
             <h2 style={{ fontSize: "var(--text-h3)", marginBottom: "16px", color: "var(--c-n-700)" }}>Dados gerais</h2>
-            <div className="modal__grid">
+            <div className="info-grid">
               <Campo rotulo="Tipo" valor={ROTULO_TIPO[ativo.tipo]} />
               <Campo
                 rotulo="Criticidade"
@@ -211,7 +211,7 @@ export function AtivoDetalhe() {
 
 function Campo({ rotulo, valor, mono }: { rotulo: string; valor: React.ReactNode; mono?: boolean }) {
   return (
-    <div className="field">
+    <div className="info-field">
       <label>{rotulo}</label>
       <span className={mono ? "mono" : undefined} style={{ color: valor ? "var(--c-n-800)" : "var(--c-n-400)" }}>
         {valor || "—"}

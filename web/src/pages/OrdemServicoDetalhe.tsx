@@ -537,7 +537,7 @@ function AbrirCorretivaModal({ os, onFechar, onCriada }: { os: OrdemServico; onF
 
 function Campo({ rotulo, valor, mono }: { rotulo: string; valor: ReactNode; mono?: boolean }) {
   return (
-    <div className="field">
+    <div className="info-field">
       <label>{rotulo}</label>
       <span className={mono ? "mono" : undefined} style={{ color: valor ? "var(--c-n-800)" : "var(--c-n-400)" }}>
         {valor || "—"}
@@ -1004,7 +1004,7 @@ export function OrdemServicoDetalhe() {
 
       {aba === "dados" && (
         <div className="card">
-          <div className="modal__grid">
+          <div className="info-grid">
             <Campo rotulo="Tipo" valor={ROTULO_TIPO_OS[os.tipo]} />
             <Campo rotulo="Origem" valor={ROTULO_ORIGEM[os.origem] ?? os.origem} />
             {os.solicitacao_origem === "globopac" && (

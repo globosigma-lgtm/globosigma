@@ -225,20 +225,20 @@ export function AuditoriaOSDetalhe() {
         </div>
       </div>
 
-      <div className="modal__grid card" style={{ marginBottom: "16px" }}>
-        <div className="field">
+      <div className="info-grid" style={{ marginBottom: "16px" }}>
+        <div className="info-field">
           <label>Prioridade</label>
           <span className={`badge badge--prioridade-${os.prioridade}`}>{ROTULO_CRITICIDADE[os.prioridade]}</span>
         </div>
-        <div className="field">
+        <div className="info-field">
           <label>Inspetor</label>
           <span>{os.responsavel_nome ?? "—"}</span>
         </div>
-        <div className="field">
+        <div className="info-field">
           <label>Data programada</label>
           <span className="mono">{os.data_programada}</span>
         </div>
-        <div className="field">
+        <div className="info-field">
           <label>Data limite</label>
           <span className="mono">{os.data_limite}</span>
         </div>

@@ -65,7 +65,7 @@ function CancelarModal({ onFechar, onConfirmar }: { onFechar: () => void; onConf
 
 function Campo({ rotulo, valor, mono }: { rotulo: string; valor: ReactNode; mono?: boolean }) {
   return (
-    <div className="field">
+    <div className="info-field">
       <label>{rotulo}</label>
       <span className={mono ? "mono" : undefined} style={{ color: valor ? "var(--c-n-800)" : "var(--c-n-400)" }}>
         {valor || "—"}
@@ -237,7 +237,7 @@ export function RequisicaoCompraDetalhe() {
 
       <div className="card" style={{ marginBottom: "16px" }}>
         <h2 style={{ fontSize: "var(--text-h3)", marginBottom: "16px", color: "var(--c-n-700)" }}>Dados gerais</h2>
-        <div className="modal__grid">
+        <div className="info-grid">
           <Campo rotulo="Fornecedor" valor={requisicao.fornecedor} />
           <Campo rotulo="Criada por" valor={requisicao.criada_por_nome} />
           <Campo rotulo="Data de necessidade" valor={formatarData(requisicao.data_necessidade)} mono />

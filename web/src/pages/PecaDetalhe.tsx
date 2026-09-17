@@ -148,7 +148,7 @@ export function PecaDetalhe() {
 
           <div className="card">
             <h2 style={{ fontSize: "var(--text-h3)", marginBottom: "16px", color: "var(--c-n-700)" }}>Dados gerais</h2>
-            <div className="modal__grid">
+            <div className="info-grid">
               <Campo rotulo="Unidade de medida" valor={ROTULO_UNIDADE[peca.unidade_medida]} />
               <Campo rotulo="Categoria" valor={peca.categoria} />
               <Campo rotulo="Fabricante" valor={peca.fabricante} />
@@ -270,7 +270,7 @@ export function PecaDetalhe() {
 
 function Campo({ rotulo, valor, mono }: { rotulo: string; valor: React.ReactNode; mono?: boolean }) {
   return (
-    <div className="field">
+    <div className="info-field">
       <label>{rotulo}</label>
       <span className={mono ? "mono" : undefined} style={{ color: valor ? "var(--c-n-800)" : "var(--c-n-400)" }}>
         {valor || "—"}

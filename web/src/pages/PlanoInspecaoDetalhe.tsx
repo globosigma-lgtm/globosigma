@@ -101,7 +101,7 @@ export function PlanoInspecaoDetalhe() {
       {aba === "dados" && (
         <div className="card">
           <h2 style={{ fontSize: "var(--text-h3)", marginBottom: "16px", color: "var(--c-n-700)" }}>Dados gerais</h2>
-          <div className="modal__grid">
+          <div className="info-grid">
             <Campo rotulo="Equipamento" valor={<Link to={`/ativos/${plano.ativo_id}`}>{plano.ativo_caminho}</Link>} />
             <Campo rotulo="Setor" valor={plano.setor} />
             <Campo
@@ -165,7 +165,7 @@ export function PlanoInspecaoDetalhe() {
 
 function Campo({ rotulo, valor, mono }: { rotulo: string; valor: React.ReactNode; mono?: boolean }) {
   return (
-    <div className="field">
+    <div className="info-field">
       <label>{rotulo}</label>
       <span className={mono ? "mono" : undefined} style={{ color: valor ? "var(--c-n-800)" : "var(--c-n-400)" }}>
         {valor || "—"}
