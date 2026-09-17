@@ -49,11 +49,16 @@ authRouter.post("/login", limitadorLogin, asyncHandler(async (req, res) => {
   await registrarAcesso(usuario.id);
   const token = assinarToken({ usuarioId: usuario.id });
   // SEG-02: em produção (atrás de HTTPS) isso precisa ser true, ou o cookie de sessão trafega em
-  // texto claro. Condicionado a NODE_ENV em vez de fixo para não quebrar o dev local sobre HTTP.
+  // texto claro. `CONTEXT` é injetado automaticamente pelo Netlify (build e functions, sem precisar
+  // configurar nada) com o deploy context ("production"/"deploy-preview"/"branch-deploy"/"dev") —
+  // diferente de NODE_ENV, que a imagem de build do Netlify usa pra decidir se instala
+  // devDependencies, o que quebrava `tsc`/`vitest` quando setado como "production" (ver netlify.toml,
+  // CI-02). NODE_ENV continua como fallback pro dev local (`npm run dev`, fora do Netlify).
+  const producao = process.env.CONTEXT === "production" || process.env.NODE_ENV === "production";
   res.cookie(COOKIE_NAME, token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: producao,
     maxAge: 12 * 60 * 60 * 1000,
   });
   const { senha_hash, ...usuarioSemSenha } = usuario;
