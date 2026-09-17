@@ -1,5 +1,11 @@
+# CI-02: o build do próprio Netlify roda só compilação (sem os testes) — o ambiente de build dele
+# não resolve o binário do vitest do workspace "server" (mesmo com devDependencies instaladas),
+# um problema específico da imagem de build que não reproduz local nem no GitHub Actions. Os testes
+# continuam rodando automaticamente em dois lugares que funcionam de verdade: a cada push/PR via
+# .github/workflows/ci.yml, e localmente antes de todo `npm run deploy` (que chama build:all, com
+# testes, antes do netlify deploy). Ver histórico de builds do site pra contexto se isso mudar.
 [build]
-  command = "npm run build:all"
+  command = "npm run build:server && npm run build:web"
   publish = "web/dist"
   functions = "netlify/functions"
 
